@@ -1,0 +1,26 @@
+name: 04 - Using Actions
+
+on:
+ push:
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 04-usingactions/react-app
+
+    steps:
+      - name: checkout teh code
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+           node-version: '20.x'
+      - name: install dependencies
+        run: npm ci
+      - name: Run Unit tests
+        run: npm run tests
+        
+    #1: checkout the code
